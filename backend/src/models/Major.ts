@@ -40,4 +40,5 @@ export const MajorSchema = new Schema({
 });
 
 const Major = model<IMajor>('Major', MajorSchema);
+
 export default Major;

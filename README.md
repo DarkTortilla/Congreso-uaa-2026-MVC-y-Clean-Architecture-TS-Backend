@@ -2,7 +2,6 @@
 
 Este repositorio sirve como guía académica para el taller de MVC y Clean Architecture aplicado al desarrollo de un backend con TypeScript. El objetivo es que el alumnado construya una API completa con autenticación basada en JWT, activación de cuenta por correo electrónico, validación de datos con express-validator, limitación de peticiones mediante rate limit, rutas protegidas y manejo global de errores.
 
-Los documentos del taller incluirán diagramas sencillos; si se requiere una imagen y aún no está disponible, se dejará un espacio indicado como [por definir].
 
 ## Herramientas y tecnologías
 - TypeScript

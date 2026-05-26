@@ -1,6 +1,6 @@
 // const express = require("express");
 import express from "express";
-import { dbConnection } from "./conf/mongoDB";
+import { dbConnection } from "./conf/mongoDB.ts";
 
 const  server = express();
 // conexion db
