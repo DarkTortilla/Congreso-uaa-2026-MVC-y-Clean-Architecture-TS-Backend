@@ -24,6 +24,11 @@ export const UserSchema: Schema = new Schema({
         required: true,
         ref: 'Major'
     },
+    email:{
+        type: String,
+        required:true,
+        unique:true,
+    },
     semester: {
         type: Number,
         required:true,

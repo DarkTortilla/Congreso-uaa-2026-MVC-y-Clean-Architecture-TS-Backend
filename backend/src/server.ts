@@ -8,4 +8,4 @@ const  server = express();
 // rutas
 dbConnection();
 
-export default server;
+export default server

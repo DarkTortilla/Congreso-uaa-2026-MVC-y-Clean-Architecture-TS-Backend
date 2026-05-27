@@ -1,4 +1,4 @@
-import { Schema, model, Document } from "mongoose";
+import { Schema, model, Document, Types } from "mongoose";
 
 export interface IMajor extends Document {
     name: String,
@@ -36,7 +36,7 @@ export const MajorSchema = new Schema({
     registerEndDate: {
         type: Date,
         required: true,
-    }
+    },
 });
 
 const Major = model<IMajor>('Major', MajorSchema);

@@ -24,7 +24,7 @@
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
     "rewriteRelativeImportExtensions": true,
-    "allowImportingTsExtensions": true,
+    "allowImportingTsExtensions":true,
 
 
     // Style Options
