@@ -35,7 +35,29 @@ export class User {
       await user.save();
 
       return res.status(201).json({ message: "user created" });
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+      }
   };
-  static getUsers = async (req: Request, res: Response) => {};
+  static getUsers = async (req: Request, res: Response) => {
+    try {
+      const users = await UserModel.find().populate("major");
+      return res.status(200).json(users);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  static getUserById = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    try {
+      const user = await UserModel.findById(id).populate("major");
+      if (!user) {
+        return res.status(404).json({ error: "user not found" });
+      }
+      return res.status(200).json(user);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 }
