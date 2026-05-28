@@ -48,6 +48,12 @@ export class User {
     }
   };
 
+  /*  
+   headers
+   body
+   parmas
+   query
+  */
   static getUserById = async (req: Request, res: Response) => {
     const { id } = req.params;
     try {

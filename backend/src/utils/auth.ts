@@ -13,3 +13,12 @@ export const hashPassword = async (password: string): Promise<string> => {
 
   return hashPassword;
 };
+
+export const comparePassword = async (
+  hashPassword: string,
+  password: string,
+): Promise<boolean> => {
+  const isMatch = await bcript.compare(password, hashPassword);
+
+  return isMatch;
+};

@@ -1,8 +1,8 @@
-import { type Request, type Response } from "express";
+import { type NextFunction, type Request, type Response } from "express";
 import MajorModel from "../models/Major.ts";
 
 export class Major {
-	static createMajor = async (req: Request, res: Response) => {
+	static createMajor = async (req: Request, res: Response, next: NextFunction) => {
 		const {
 			name,
 			duration,
@@ -30,20 +30,20 @@ export class Major {
 
 			return res.status(201).json({ message: "major created" });
 		} catch (error) {
-			console.error(error);
+			next(error);
 		}
 	};
 
-	static getAllMajors = async (_req: Request, res: Response) => {
+	static getAllMajors = async (_req: Request, res: Response, next: NextFunction) => {
 		try {
 			const majors = await MajorModel.find();
 			return res.status(200).json(majors);
 		} catch (error) {
-			console.error(error);
+            next(error);
 		}
 	};
 
-	static getMajorById = async (req: Request, res: Response) => {
+	static getMajorById = async (req: Request, res: Response, next: NextFunction) => {
 		const { id } = req.params;
 		try {
 			const major = await MajorModel.findById(id);
@@ -52,11 +52,11 @@ export class Major {
 			}
 			return res.status(200).json(major);
 		} catch (error) {
-			console.error(error);
+			next(error);
 		}
 	};
 
-	static updateMAjor = async (req: Request, res: Response) => {
+	static updateMajor = async (req: Request, res: Response,next: NextFunction) => {
 		const { id } = req.params;
 		const updates = req.body;
 		try {
@@ -64,18 +64,16 @@ export class Major {
 				new: true,
 				runValidators: true,
 			});
-
 			if (!updatedMajor) {
 				return res.status(404).json({ error: "major not found" });
 			}
-
 			return res.status(200).json(updatedMajor);
 		} catch (error) {
-			console.error(error);
+            next(error);
 		}
 	};
 
-	static deleteMajor = async (req: Request, res: Response) => {
+	static deleteMajor = async (req: Request, res: Response,next: NextFunction) => {
 		const { id } = req.params;
 		try {
 			const deletedMajor = await MajorModel.findByIdAndDelete(id);
@@ -84,7 +82,7 @@ export class Major {
 			}
 			return res.status(200).json({ message: "major deleted" });
 		} catch (error) {
-			console.error(error);
+			next(error);
 		}
 	};
 }
